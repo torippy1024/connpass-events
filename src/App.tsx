@@ -32,7 +32,7 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route index element={<TopPage connpassEvents={connpassEvents}/>} />
+                <Route path="/connpass-events" element={<TopPage connpassEvents={connpassEvents}/>} />
             </Routes>
         </BrowserRouter>
     );
