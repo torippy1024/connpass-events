@@ -4,6 +4,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import TopPage from './pages/TopPage';
 import { ConnpassEventDataType } from './types/types';
 
+const ROUTER_BASENAME =
+    process.env.NODE_ENV === 'development' ? '/' : '/repo-name';
+
 function App() {
     const [connpassEvents, setConnpassEvents] = useState<ConnpassEventDataType[]>([{
         title: "",
@@ -30,9 +33,9 @@ function App() {
             .catch(err => "エラーが発生しました、ページをリロードして、もう一度トライしてください。");
     }, [])
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={ROUTER_BASENAME}>
             <Routes>
-                <Route path="/connpass-events" element={<TopPage connpassEvents={connpassEvents}/>} />
+                <Route path="/" element={<TopPage connpassEvents={connpassEvents}/>} />
             </Routes>
         </BrowserRouter>
     );
