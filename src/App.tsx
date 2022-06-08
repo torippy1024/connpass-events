@@ -5,7 +5,7 @@ import TopPage from './pages/TopPage';
 import { ConnpassEventDataType } from './types/types';
 
 const ROUTER_BASENAME =
-    process.env.NODE_ENV === 'development' ? '/' : '/repo-name';
+    process.env.NODE_ENV === 'development' ? '/' : '/connpass-events';
 
 function App() {
     const [connpassEvents, setConnpassEvents] = useState<ConnpassEventDataType[]>([{
