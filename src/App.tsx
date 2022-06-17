@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import TopPage from './pages/TopPage';
 import { ConnpassEventDataType } from './types/types';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ROUTER_BASENAME =
     process.env.NODE_ENV === 'development' ? '/' : '/connpass-events';
