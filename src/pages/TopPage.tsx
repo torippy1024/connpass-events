@@ -1,5 +1,4 @@
 import { useState } from "react";
-import RangeSlider from "react-bootstrap-range-slider";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { TopPagePropsType } from "../types/types";
@@ -11,13 +10,14 @@ const TopPage = ({ connpassEvents }: TopPagePropsType) => {
       <Header />
       <div className="container" id="top">
         <h1>Today's Events</h1>
-        <RangeSlider
+        <input
+          type="range"
           value={minAccepted}
           max={50}
           step={5}
-          tooltip='on'
           onChange={e => setMinAccepted(parseInt(e.target.value))}          
         />
+        {minAccepted}
         {connpassEvents.filter((event) => event.accepted >= minAccepted)
          .map((event, index) =>
           <div key={index} className="card">
