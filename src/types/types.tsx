@@ -16,5 +16,6 @@ export type ConnpassEventDataType = {
 }
 
 export type TopPagePropsType = {
-  connpassEvents: ConnpassEventDataType[]
+  connpassEvents: ConnpassEventDataType[];
+  setDayDisplay: React.Dispatch<React.SetStateAction<number>>;
 }

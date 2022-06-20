@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { TopPagePropsType } from "../types/types";
 
-const TopPage = ({ connpassEvents }: TopPagePropsType) => {
+const TopPage = ({ connpassEvents, setDayDisplay }: TopPagePropsType) => {
   const [minAccepted, setMinAccepted] = useState(20);
   return (
     <div>
@@ -18,6 +18,13 @@ const TopPage = ({ connpassEvents }: TopPagePropsType) => {
           onChange={e => setMinAccepted(parseInt(e.target.value))}          
         />
         {minAccepted}
+        <div>
+          <select onChange={e => setDayDisplay(Number(e.target.value))}>
+            {[0, 1, 2, 3, 4, 5, 6].map((value, index) =>
+              <option value={value} key={index}>{value}</option>
+            )}
+          </select>
+        </div>
         {connpassEvents.filter((event) => event.accepted >= minAccepted)
          .map((event, index) =>
           <div key={index} className="card">
