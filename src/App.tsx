@@ -26,7 +26,7 @@ function App() {
     address: ""
   }]);
   useEffect(() => {
-    fetch("https://shima-shima.site/connpass-api/today.json")
+    fetch("https://shima-shima.site/connpass-api/v1/events/0/")
       .then(res => res.json())
       .then(data => data.events.reverse())
       .then(events_ => events_.map((event_: any, index: any) => {
