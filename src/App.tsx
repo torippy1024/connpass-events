@@ -25,8 +25,9 @@ function App() {
     place: "",
     address: ""
   }]);
+  const [dayDisplay, setDayDisplay] = useState(0);
   useEffect(() => {
-    fetch("https://shima-shima.site/connpass-api/v1/events/0/")
+    fetch(`https://shima-shima.site/connpass-api/v1/events/${dayDisplay}/`)
       .then(res => res.json())
       .then(data => data.events.reverse())
       .then(events_ => events_.map((event_: any, index: any) => {
@@ -50,11 +51,11 @@ function App() {
       }))
       .then(events => setConnpassEvents(events))
       .catch(err => "エラーが発生しました、ページをリロードして、もう一度トライしてください。");
-  }, [])
+  }, [dayDisplay])
   return (
     <BrowserRouter basename={ROUTER_BASENAME}>
       <Routes>
-        <Route path="/" element={<TopPage connpassEvents={connpassEvents} />} />
+        <Route path="/" element={<TopPage connpassEvents={connpassEvents} setDayDisplay={setDayDisplay} />} />
       </Routes>
     </BrowserRouter>
   );
