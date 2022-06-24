@@ -27,7 +27,7 @@ function App() {
   }]);
   const [dayDisplay, setDayDisplay] = useState(0);
   useEffect(() => {
-    fetch(`https://shima-shima.site/connpass-api/v1/events/${dayDisplay}/`)
+    fetch(`https://shima-usa.net/connpass-api/v1/events/${dayDisplay}/`)
       .then(res => res.json())
       .then(data => data.events.reverse())
       .then(events_ => events_.map((event_: any, index: any) => {
