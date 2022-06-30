@@ -5,7 +5,7 @@
 ## 概要
 
 IT勉強会支援プラットフォーム「[connpass](https://connpass.com/)」の人気イベントを表示するアプリ。<br>
-URL: https://relaxed-sfogliatella-6c4f61.netlify.app/
+URL: https://shima-usa.net/connpass-events/
 
 本日connpassで開催される人気イベント情報を開催時間順に表示している。<br>
 参加人数でフィルターをかけることができ、人気イベントをピックアップして確認することができる。<br>
