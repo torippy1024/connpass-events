@@ -15,7 +15,7 @@ const Header = () => {
               <Scroll className="nav-link" to="top" offset={-60}>Home</Scroll>
             </li>
             <li className="nav-item active">
-              <a className="nav-link" href="https://github.com/hiroto-toriyama/connpass-events"  target="_blank" rel="noopener noreferrer">About <small>(GitHub)</small></a>
+              <a className="nav-link" href="https://github.com/hiroto-toriyama/connpass-events"  target="_blank" rel="noopener noreferrer">About</a>
             </li>
           </ul>
         </div>
