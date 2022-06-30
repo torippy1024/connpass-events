@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import TopPage from './pages/TopPage';
-import { ConnpassEventDataType } from './types/types';
+import { ConnpassEventDataType, DaysType, EventsDatesType } from './types/types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ROUTER_BASENAME =
@@ -25,7 +25,36 @@ function App() {
     place: "",
     address: ""
   }]);
-  const [dayDisplay, setDayDisplay] = useState(0);
+  const [eventsDates, setEventsDates] = useState<EventsDatesType>({
+    updateTime: "",
+    days: {
+        0: "",
+        1: "",
+        2: "",
+        3: "",
+        4: "",
+        5: "",
+        6: "",
+    }
+  });
+  const [dayDisplay, setDayDisplay] = useState<DaysType>(0);
+  useEffect(() => {
+    fetch("https://shima-usa.net/connpass-api/v1/date/")
+      .then(res => res.json())
+      .then(date => setEventsDates({
+        updateTime: date["update-time"],
+        days: {
+            0: date["days"]["0"],
+            1: date["days"]["1"],
+            2: date["days"]["2"],
+            3: date["days"]["3"],
+            4: date["days"]["4"],
+            5: date["days"]["5"],
+            6: date["days"]["6"],
+        }        
+      }))
+      .catch(err => "エラーが発生しました、ページをリロードして、もう一度トライしてください。");
+  }, []);
   useEffect(() => {
     fetch(`https://shima-usa.net/connpass-api/v1/events/${dayDisplay}/`)
       .then(res => res.json())
@@ -55,7 +84,7 @@ function App() {
   return (
     <BrowserRouter basename={ROUTER_BASENAME}>
       <Routes>
-        <Route path="/" element={<TopPage connpassEvents={connpassEvents} setDayDisplay={setDayDisplay} />} />
+        <Route path="/" element={<TopPage connpassEvents={connpassEvents} dayDisplay={dayDisplay} setDayDisplay={setDayDisplay} eventsDates={eventsDates}/>} />
       </Routes>
     </BrowserRouter>
   );
