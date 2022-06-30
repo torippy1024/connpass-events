@@ -17,21 +17,25 @@ const TopPage = ({ connpassEvents, dayDisplay, setDayDisplay, eventsDates}: TopP
       <Header />
       <div className="container" id="top">
         <h1>{`${parseInt(eventsDates["days"][dayDisplay].slice(4, 6))}/${eventsDates["days"][dayDisplay].slice(6, 8)}`}開催のイベント</h1>
-        <input
-          type="range"
-          value={minAccepted}
-          max={50}
-          step={5}
-          onChange={e => setMinAccepted(parseInt(e.target.value))}          
-        />
-        {minAccepted}
-        <div>
+        <p>
+          参加人数：
+          <input
+            type="range"
+            value={minAccepted}
+            max={50}
+            step={5}
+            onChange={e => setMinAccepted(parseInt(e.target.value))}          
+          />
+          <b><big>{minAccepted}</big></b>人以上
+        </p>
+        <p>
+          日付：
           <select onChange={e => setDayDisplay(convertStringToKey(e.target.value))}>
             {keyDays.map((value, index) =>
               <option value={value} key={index}>{`${parseInt(eventsDates["days"][value].slice(4, 6))}/${eventsDates["days"][value].slice(6, 8)}`}</option>
             )}
           </select>
-        </div>
+        </p>
         {connpassEvents.filter((event) => event.accepted >= minAccepted)
          .map((event, index) =>
           <div key={index} className="card">
