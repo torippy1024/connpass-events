@@ -1,15 +1,22 @@
 import { useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import { TopPagePropsType } from "../types/types";
+import { DaysType, TopPagePropsType } from "../types/types";
 
-const TopPage = ({ connpassEvents, setDayDisplay }: TopPagePropsType) => {
+const TopPage = ({ connpassEvents, dayDisplay, setDayDisplay, eventsDates}: TopPagePropsType) => {
   const [minAccepted, setMinAccepted] = useState(20);
+  const keyDays: DaysType[] = [0, 1, 2, 3, 4, 5, 6];
+  const convertStringToKey = (value: string): DaysType => {
+    for (const key of keyDays) {
+      if (Number(value) === key) return key;
+    }
+    return 0;
+  };
   return (
     <div>
       <Header />
       <div className="container" id="top">
-        <h1>Today's Events</h1>
+        <h1>{`${parseInt(eventsDates["days"][dayDisplay].slice(4, 6))}/${eventsDates["days"][dayDisplay].slice(6, 8)}`}開催のイベント</h1>
         <input
           type="range"
           value={minAccepted}
@@ -19,9 +26,9 @@ const TopPage = ({ connpassEvents, setDayDisplay }: TopPagePropsType) => {
         />
         {minAccepted}
         <div>
-          <select onChange={e => setDayDisplay(Number(e.target.value))}>
-            {[0, 1, 2, 3, 4, 5, 6].map((value, index) =>
-              <option value={value} key={index}>{value}</option>
+          <select onChange={e => setDayDisplay(convertStringToKey(e.target.value))}>
+            {keyDays.map((value, index) =>
+              <option value={value} key={index}>{`${parseInt(eventsDates["days"][value].slice(4, 6))}/${eventsDates["days"][value].slice(6, 8)}`}</option>
             )}
           </select>
         </div>
