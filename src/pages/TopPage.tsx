@@ -37,13 +37,17 @@ const TopPage = ({ connpassEvents, dayDisplay, setDayDisplay, eventsDates}: TopP
           </select>
         </p>
         {connpassEvents.filter((event) => event.accepted >= minAccepted)
-         .map((event, index) =>
-          <div key={index} className="card">
+        .map((event, index) =>
+          <div key={index} className="card border-success mb-2">
+            <div className="card-header">
+                <div>参加人数：{event.accepted}{event.limit ? ` / ${event.limit}` : ""}</div> 
+                <div>{event.started_at.slice(11, 16)} ~ {event.ended_at.slice(11, 16)}</div>
+            </div>
             <div className="card-body">
-              <h3><a href={event.event_url} target="_blank" rel="noopener noreferrer" className="text-decoration-none">{event.title}</a></h3>
-              <h4>参加人数：{event.accepted} / {event.limit}</h4>
-              <p>開始時刻：{event.started_at.slice(11, 16)}</p>
-              <p>開始時刻：{event.ended_at.slice(11, 16)}</p>
+              <h3 card-title><a href={event.event_url} target="_blank" rel="noopener noreferrer" className="text-decoration-none text-success">{event.title}</a></h3>
+              <div className="card-text text-muted">
+                <p className="text-truncate">{event.description.replace(/(<([^>]+)>)/gi, '')}</p>
+              </div>
             </div>
           </div>
         )}
