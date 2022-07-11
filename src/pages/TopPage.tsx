@@ -1,10 +1,20 @@
 /** @jsxImportSource @emotion/react */
 
 // import { css } from "@emotion/react";
+import { css } from "@emotion/react";
 import { useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { DaysType, TopPagePropsType } from "../types/types";
+
+const styles = {
+  cardText: css({
+    overflow: "hidden",
+    display: "-webkit-box",
+    WebkitBoxOrient: "vertical",
+    WebkitLineClamp: 2
+  })
+};
 
 const TopPage = ({ connpassEvents, dayDisplay, setDayDisplay, eventsDates}: TopPagePropsType) => {
   const [minAccepted, setMinAccepted] = useState(20);
@@ -49,7 +59,7 @@ const TopPage = ({ connpassEvents, dayDisplay, setDayDisplay, eventsDates}: TopP
             <div className="card-body">
               <h3 className="card-title"><a href={event.event_url} target="_blank" rel="noopener noreferrer" className="text-decoration-none text-success">{event.title}</a></h3>
               <div className="card-text text-muted">
-                <p className="text-truncate">{event.description.replace(/(<([^>]+)>)/gi, '')}</p>
+                <p css={styles.cardText}>{event.description.replace(/(<([^>]+)>)/gi, '')}</p>
               </div>
             </div>
           </div>
