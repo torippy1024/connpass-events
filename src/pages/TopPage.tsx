@@ -1,3 +1,6 @@
+/** @jsxImportSource @emotion/react */
+
+import { css } from "@emotion/react";
 import { useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -17,7 +20,7 @@ const TopPage = ({ connpassEvents, dayDisplay, setDayDisplay, eventsDates}: TopP
       <Header />
       <div className="container" id="top">
         <h1>{`${parseInt(eventsDates["days"][dayDisplay].slice(4, 6))}/${eventsDates["days"][dayDisplay].slice(6, 8)}`}開催のイベント</h1>
-        <p>
+        <p>s
           参加人数：
           <input
             type="range"
