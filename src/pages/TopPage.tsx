@@ -1,7 +1,25 @@
+/** @jsxImportSource @emotion/react */
+
+// import { css } from "@emotion/react";
+import { css } from "@emotion/react";
 import { useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { DaysType, TopPagePropsType } from "../types/types";
+
+const styles = {
+  cardText: css({
+    overflow: "hidden",
+    display: "-webkit-box",
+    WebkitBoxOrient: "vertical",
+    WebkitLineClamp: 2
+  }),
+  link: css({
+    "&:hover": {
+      textDecoration: "none"
+    }
+  })
+};
 
 const TopPage = ({ connpassEvents, dayDisplay, setDayDisplay, eventsDates}: TopPagePropsType) => {
   const [minAccepted, setMinAccepted] = useState(20);
@@ -37,13 +55,18 @@ const TopPage = ({ connpassEvents, dayDisplay, setDayDisplay, eventsDates}: TopP
           </select>
         </p>
         {connpassEvents.filter((event) => event.accepted >= minAccepted)
-         .map((event, index) =>
-          <div key={index} className="card">
+        .map((event, index) =>
+          <div key={index} className="card border-success mb-2">
+            <div className="card-header">
+                <div>参加人数：<big>{event.accepted}</big>{event.limit ? ` / ${event.limit}` : ""}人</div> 
+                <div>{event.started_at.slice(11, 16)} ~ {event.ended_at.slice(11, 16)}</div>
+            </div>
             <div className="card-body">
-              <h3><a href={event.event_url} target="_blank" rel="noopener noreferrer" className="text-decoration-none">{event.title}</a></h3>
-              <h4>参加人数：{event.accepted} / {event.limit}</h4>
-              <p>開始時刻：{event.started_at.slice(11, 16)}</p>
-              <p>開始時刻：{event.ended_at.slice(11, 16)}</p>
+              {/* <h3 className="card-title"><a href={event.event_url} target="_blank" rel="noopener noreferrer" className="text-success" css={styles.link}>{event.title}</a></h3> */}
+              <h3 className="card-title"><a href={event.event_url} target="_blank" rel="noopener noreferrer" className="link-success" css={styles.link}>{event.title}</a></h3>
+              <div className="card-text text-muted">
+                <p css={styles.cardText}>{event.description.replace(/(<([^>]+)>)/gi, '')}</p>
+              </div>
             </div>
           </div>
         )}
