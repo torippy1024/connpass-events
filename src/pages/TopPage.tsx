@@ -13,6 +13,11 @@ const styles = {
     display: "-webkit-box",
     WebkitBoxOrient: "vertical",
     WebkitLineClamp: 2
+  }),
+  link: css({
+    "&:hover": {
+      textDecoration: "none"
+    }
   })
 };
 
@@ -57,7 +62,8 @@ const TopPage = ({ connpassEvents, dayDisplay, setDayDisplay, eventsDates}: TopP
                 <div>{event.started_at.slice(11, 16)} ~ {event.ended_at.slice(11, 16)}</div>
             </div>
             <div className="card-body">
-              <h3 className="card-title"><a href={event.event_url} target="_blank" rel="noopener noreferrer" className="text-decoration-none text-success">{event.title}</a></h3>
+              {/* <h3 className="card-title"><a href={event.event_url} target="_blank" rel="noopener noreferrer" className="text-success" css={styles.link}>{event.title}</a></h3> */}
+              <h3 className="card-title"><a href={event.event_url} target="_blank" rel="noopener noreferrer" className="link-success" css={styles.link}>{event.title}</a></h3>
               <div className="card-text text-muted">
                 <p css={styles.cardText}>{event.description.replace(/(<([^>]+)>)/gi, '')}</p>
               </div>
