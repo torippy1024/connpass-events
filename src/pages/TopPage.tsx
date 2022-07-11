@@ -53,7 +53,7 @@ const TopPage = ({ connpassEvents, dayDisplay, setDayDisplay, eventsDates}: TopP
         .map((event, index) =>
           <div key={index} className="card border-success mb-2">
             <div className="card-header">
-                <div>参加人数：{event.accepted}{event.limit ? ` / ${event.limit}` : ""}</div> 
+                <div>参加人数：<big>{event.accepted}</big>{event.limit ? ` / ${event.limit}` : ""}人</div> 
                 <div>{event.started_at.slice(11, 16)} ~ {event.ended_at.slice(11, 16)}</div>
             </div>
             <div className="card-body">
