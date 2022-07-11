@@ -1,5 +1,7 @@
 # Connpass Hot Event
 [![pages-build-deployment](https://github.com/hiroto-toriyama/connpass-events/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/hiroto-toriyama/connpass-events/actions/workflows/pages/pages-build-deployment)
+[![deploy](https://github.com/hiroto-toriyama/connpass-events/actions/workflows/deploy.yaml/badge.svg)](https://github.com/hiroto-toriyama/connpass-events/actions/workflows/deploy.yaml)
+[![test](https://github.com/hiroto-toriyama/connpass-events/actions/workflows/test.yaml/badge.svg)](https://github.com/hiroto-toriyama/connpass-events/actions/workflows/test.yaml)
 
 
 ## 概要
